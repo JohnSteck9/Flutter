@@ -4,13 +4,14 @@ import 'package:english_words/english_words.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    // final wordPair = WordPair.random();
-
     return MaterialApp(
       title: 'Startup Name Generator',
       home: RandomWords(),
+
+      // MyView(),
     );
   }
 }
@@ -55,6 +56,30 @@ class _RandomWordsState extends State<RandomWords> {
         pair.asPascalCase,
         style: _biggerFont,
       ),
+      trailing: const Text('Alert Dialog'),
+      onTap: () {
+        _showDialog(context);
+      },
     );
   }
+}
+
+void _showDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text("Alert!!"),
+        content: const Text("You are awesome!"),
+        actions: <Widget>[
+          FlatButton(
+            child: const Text("OK"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
